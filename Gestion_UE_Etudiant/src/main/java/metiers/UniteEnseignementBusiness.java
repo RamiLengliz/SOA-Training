@@ -17,6 +17,7 @@ public class UniteEnseignementBusiness {
         unitesEnseignement.add(new UniteEnseignement(3, "Physique", "Mme Sarra Abidi", 4, 2));
         unitesEnseignement.add(new UniteEnseignement(4, "Infographie", "Mme Oumeima Ibnelfkih", 3, 1));
         unitesEnseignement.add(new UniteEnseignement(5, "Chimie", "M. Mohamed Amine Chebbi", 4, 2));
+
     }
 
     public UniteEnseignement getUEByCode(int code) {
@@ -27,9 +28,15 @@ public class UniteEnseignementBusiness {
         return null;
     }
 
-    public boolean addUniteEnseignement(UniteEnseignement ue) {
-        return unitesEnseignement.add(ue);
-    }
+
+        public boolean addUniteEnseignement(UniteEnseignement ue) {
+            // Check if already exists before adding
+            if (getUEByCode(ue.getCode()) != null) {
+                return false; // Already exists
+            }
+            return unitesEnseignement.add(ue);
+        }
+    
 
     public List<UniteEnseignement> getUEByDomaine(String domaine) {
         List<UniteEnseignement> liste = new ArrayList<UniteEnseignement>();

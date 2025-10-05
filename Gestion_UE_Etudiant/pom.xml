@@ -42,5 +42,22 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>2.3.3</version>
         </dependency>
+
+        <!-- ===== AJOUTE CES 2 DÉPENDANCES ===== -->
+
+        <!-- Support XML pour JAX-RS -->
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-jaxb</artifactId>
+            <version>2.27</version>
+        </dependency>
+
+        <!-- JAXB API pour Java 9+ -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
     </dependencies>
 </project>
