@@ -1,7 +1,9 @@
 package webservices;
+import com.sun.jdi.Value;
 import entities.UniteEnseignement;
 import metiers.UniteEnseignementBusiness;
 
+import javax.swing.text.html.parser.Entity;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,4 +32,36 @@ public class UEResources {
         }else { return  Response.status(409).entity("already exist").build();
     }
 }
+
+    @Path("/update/{code}")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response update(@PathParam("code") int code, UniteEnseignement ue) {
+        if (helper.updateUniteEnseignement(code, ue)) {
+            return Response.status(200).entity("updated successfully").build();
+        } else {
+            return Response.status(404).entity("not found").build();
+        }
+    }
+
+
+    @Path("/delete/{code}")
+    @DELETE
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response delete(@PathParam("code") int code) {
+        if (this.helper.deleteUniteEnseignement(code)) {
+            return Response.status(200).entity("delete successfully").build();
+        } else {
+            return Response.status(404).entity("not found").build();
+        }
+    }
+
+    @Path("/search")
+    @GET
+    @Produces (MediaType.APPLICATION_JSON)
+    public  Response search(@QueryParam( value = "s") int semestre ){
+        return Response.status(200).entity(this.helper.getUEBySemestre(semestre)).build();
+    }
+
 }

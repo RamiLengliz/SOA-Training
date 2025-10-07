@@ -36,7 +36,7 @@ public class UniteEnseignementBusiness {
             }
             return unitesEnseignement.add(ue);
         }
-    
+
 
     public List<UniteEnseignement> getUEByDomaine(String domaine) {
         List<UniteEnseignement> liste = new ArrayList<UniteEnseignement>();
